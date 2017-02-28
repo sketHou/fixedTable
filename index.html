@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>freezeTable</title>
+<style>
+	td{
+		white-space: nowrap;
+		display: table-cell;
+		padding: 8px 10px;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	.leftarea{
+		width: 100px;
+		float: left;
+	}
+	.centerarea{
+		width: 30%;
+    	float: left;
+		overflow: hidden
+	}
+	table{
+		table-layout:fixed;
+	}
+	.centerdiv1, .centerdiv2, .centerdiv1-wrapper{
+		width: 1000px;
+	}
+
+	/*.centerdiv1wrapper{
+		width: 985px
+	}*/
+
+	.centerarea{
+		overflow-x: auto;
+	}
+
+	.leftdiv2, .rightdiv2{
+		height: 100px;
+		overflow: hidden;
+	}
+	.centerdiv1{
+		height: 31px;
+	}
+	.centerdiv2{
+		height: 102px;
+		overflow-y: auto;
+		overflow-x: hidden;/*new add*/
+	}
+
+	.rightArea{
+		width: 100px;
+		float: left
+	}
+
+
+</style>
+<script type="text/javascript" src="scripts/jquery-1.8.3/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="scripts/report-function.js"></script>
+</head>
+<body>
+	<div id="table" style="margin-top:20px"></div>
+	<script>
+
+		var tableObj = $('#table').freezeTable({
+			// title: ['ID', 'title1', 'title2', 'title3', '编辑'],
+			title: ['ID', 'title1', 'title2', 'title3', 'title4', 'title5', 'title6', 'title7', '编辑'],
+			data: [
+				[1011, 1, '2222222222222222222222222222222222222222222222', 3, 4, 5, 6, 7],
+				[1012, 1, 2, 3, 4, 5, 6, 7],
+				[1013, 1, 2, 3, 4, 5, 6, 7],
+				[1014, 1, 2, 3, '3', 5, 6, 7],
+				[1015, 1, 2, 3, 4, 5, 6, 7],
+				[1016, 1, 2, 3, 4, 5, 6, 7],
+				[1017, 1, 2, 3, 4, 5, 6, 7],
+				[1018, 1, 2, 3, 4, 5, 6, 7],
+				[1019, 1, 2, 3, 4, 5, 6, 7],
+				[1021, 1, 2, 3, 4, 5, 6, 7],
+			],
+			// data: [
+			// 	[1011, 1, 2, 3],
+			// 	[1012, 1, 2, 3],
+			// 	[1013, 1, 2, 3],
+			// 	[1014, 1, 2, 3],
+			// 	[1015, 1, 2, 3],
+			// 	[1016, 1, 2, 3],
+			// 	[1017, 1, 2, 3],
+			// 	[1018, 1, 2, 3],
+			// 	[1019, 1, 2, 3],
+			// 	[1021, 1, 2, 3],
+			// ],
+			columnDefs: [
+				{
+					render: function(data, index){
+						return '<div class="render" onclick="del(' + index + ')">' + data[0] + ' index:' + index  +'</div>'
+					}
+				}
+			]
+		});
+
+		tableObj.addRow([1022, 11, 22, 33, 44, 55, 66, 77]);
+
+		function del(index){
+			tableObj.delRow(index)
+		}
+
+		
+
+	</script>
+</body>
+</html>
